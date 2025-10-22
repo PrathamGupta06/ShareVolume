@@ -1,0 +1,5 @@
+{
+  "entityName": "Capital One",
+  "max": { "val": 322000000, "fy": "2023" },
+  "min": { "val": 300000000, "fy": "2021" }
+}

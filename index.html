@@ -3,37 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Web App</title>
+    <title>Capital One — Shares Outstanding</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Generated Web Application</h1>
-        <p>Brief: Your assigned company: Capital One (COF), CIK 0000927628.
+        <header>
+            <h1 id="share-entity-name">Capital One</h1>
+            <p class="lede">A quick view of Entity Common Stock Shares Outstanding (filtered for fiscal years &gt; 2020)</p>
+        </header>
 
-Fetch https://data.sec.gov/api/xbrl/companyconcept/CIK0000927628/dei/EntityCommonStockSharesOutstanding.json (set a descriptive User-Agent per SEC guidance).
-Read `.entityName`. Filter `.units.shares[]` for entries whose `fy` > "2020" and
-includes a numeric `val`.
-Save `data.json` with this structure:
-`{"entityName": "Capital One", "max": {"val": ..., "fy": ...}, "min": {"val": ..., "fy": ...}}`
-where `max` and `min` refer to the highest and lowest `.val`. Break ties however you like.
+        <main id="app-content">
+            <section class="card">
+                <h2>Summary</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>Maximum</h3>
+                        <div class="value" id="share-max-value">322000000</div>
+                        <div class="meta">Fiscal Year: <span id="share-max-fy">2023</span></div>
+                    </div>
 
-Render a visually appealing `index.html` where:
-- `<title>` and `<h1>` must include the live `entityName`.
-- The max/min figures are clearly marked with these IDs:
-  `share-entity-name`,
-  `share-max-value`, `share-max-fy`,
-  `share-min-value`, `share-min-fy`.
+                    <div class="stat">
+                        <h3>Minimum</h3>
+                        <div class="value" id="share-min-value">300000000</div>
+                        <div class="meta">Fiscal Year: <span id="share-min-fy">2021</span></div>
+                    </div>
+                </div>
 
-If the page is opened as `index.html?CIK=0001018724` (or any other 10-digit CIK),
-`fetch()` from the SEC endpoint for that CIK using any proxy, e.g. AIPipe,
-replace every ID listed above and the title and H1 without reloading the page.
+                <p class="note">This page will attempt to fetch live data from the SEC for the default CIK (0000927628). Append <code>?CIK=0001018724</code> (or any other 10-digit CIK) to fetch another company's data through a proxy without reloading the page.</p>
+            </section>
+        </main>
 
-Also commit the attachment uid.txt as-is.</p>
-        <div id="app-content">
-            <!-- Application content will be generated here -->
-        </div>
+        <footer>
+            <p>Data source: SEC EDGAR XBRL company concept endpoint</p>
+        </footer>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
